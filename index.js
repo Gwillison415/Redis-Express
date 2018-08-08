@@ -13,8 +13,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const app = express();
 const port = process.env.PORT || 8002;
+const redisPort = process.env.REDIS_PORT || 6379;
 const server = new RedisServer({
-  port: 6379,
+  port: redisPort,
   bin: '/usr/local/bin/redis-server'});
 
 const query = require('./routes/query');
@@ -31,13 +32,9 @@ server.open((err) => {
     console.log('redis err===', err);
 
   }
-  console.log("You may now connect a client to the Redis server bound to port 6379");
+  console.log(`You may now connect a client to the Redis server bound to port ${redisPort}`);
 });
 
-// app.use( '/' ,(req, res) =>{
-//   console.log("req", req);
-//   res.sendStatus(201)
-// })
 app.use('/query', query);
 app.listen(port, () => {
   if (app.get('env') !== 'test') {
