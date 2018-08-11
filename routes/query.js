@@ -19,23 +19,23 @@ router.get('/', (req, res, next) => {
    console.log('inside player/:playerid');
   const playerId = Number.parseInt(req.query.playerId, 10);
   const eventId = Number.parseInt(req.query.eventId, 10);
-  console.log('req.query', req.query);
-  console.log('req.params' ,req.params);
-  console.log("playerId", playerId, "eventId", eventId);
+
   if (Number.isNaN(playerId)) {
     return next();
   }
   if (eventId) {
+    console.time("getPlayerDataByEventId")
     return getPlayerDataByEventId( eventId, playerId)
     .then(playersByEventData => {
       console.log("playersByEventData",playersByEventData);
+      console.timeEnd("getPlayerDataByEventId")
       return res.status(200).send(playersByEventData);
     });
   } else {
-
+  console.time("getPlayerDataById")
     return getPlayerDataById(playerId)
     .then((playerData) => {
-      console.log('resolved promisify', playerData);
+      console.timeEnd("getPlayerDataById")
       return res.status(200).send(playerData);
     })
     .catch((err) => {
