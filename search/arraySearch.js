@@ -2,9 +2,9 @@
 
 exports.linearSearch = function(array, val, idType) {
   console.time('linearSearch');
-  console.timeEnd('linearSearch');
   for (var i = 0; i < array.length; i++) {
     if (array[i][idType] === val) {
+      console.timeEnd('linearSearch');
       return array[i];
     }
   }
@@ -35,7 +35,7 @@ exports.binarySearchRecursive = function binarySearchRecursive(array, idType, va
   if (max - min < 2 && array[0][idType] !== value) {
     console.timeEnd('binarySearchRecursive');
     return -1;
-  }  else if (array[mid] === value) {
+  }  else if (array[mid][idType] === value) {
     console.timeEnd('binarySearchRecursive');
     return array[mid];
   } else if (value > array[mid][idType]) {

@@ -5,7 +5,8 @@ const query = require('./routes/query');
 const sorting = require('./routes/sorting');
 
 const jsonData = require('./data')
-const {createKvStore} = require('./preSort/preSort')
+const {createKvStore, createDictionaryDS
+} = require('./preSort/preSort')
 require('dotenv').config();
 
 if (process.env.NODE_ENV !== 'production') {
@@ -35,12 +36,17 @@ server.open((err) => {
 
 app.use('/query', query);
 app.use('/sorting', sorting);
+
+app.get('/testsorting', (req, res) => {
+  // TODO run all routes
+})
 app.listen(port, () => {
   if (app.get('env') !== 'test') {
     console.log('Listening on port', port);
-    console.time('CreateKeyValueStore')
+    console.time('Exit listen function')
     createKvStore(jsonData)
+    createDictionaryDS(jsonData)
     console.log("Key Value store created");
-    console.timeEnd('CreateKeyValueStore')
+    console.timeEnd('Exit listen function')
   }
 });

@@ -10,12 +10,13 @@ router.get('/bubbleSort', (req, res) => {
   let searchType = req.query.searchType;
   console.log('searchType', searchType);
   let sortedArray = bubbleSort(jsonData, 'player_id');
-  if (searchType = 'binary') {
-    var returnValue = binarySearch(sortedArray, 338365)
-  } else if (searchType = 'binaryRecursive') {
-    var returnValue = binarySearchRecursive(sortedArray, 338365)
-  } else if (searchType = 'linear') {
-    var returnValue = linearSearch(sortedArray, 338365)
+  if (searchType === 'binary') {
+    var returnValue = binarySearch(sortedArray, 'player_id', playerId)
+  } else if (searchType === 'binaryRecursive') {
+    var returnValue = binarySearchRecursive(sortedArray, 'player_id', playerId)
+  } else if (searchType === 'linear') {
+    console.log('in linear');
+    var returnValue = linearSearch(sortedArray, playerId, 'player_id')
   } else {
     return res.sendStatus(400);
   }  console.timeEnd('bubbleSortRoute')
@@ -26,12 +27,12 @@ router.get('/mergeSort', (req, res) => {
   const playerId = Number.parseInt(req.query.playerId, 10);
   let searchType = req.query.searchType;
   let sortedArray = mergeSort(jsonData, 'player_id');
-  if (searchType = 'binary') {
-    let returnValue = binarySearch(sortedArray, 338365)
-  } else if (searchType = 'binaryRecursive') {
-    var returnValue = binarySearchRecursive(sortedArray, 338365)
-  } else if (searchType = 'linear') {
-    var returnValue = linearSearch(sortedArray, 338365)
+  if (searchType === 'binary') {
+    let returnValue = binarySearch(sortedArray, playerId)
+  } else if (searchType === 'binaryRecursive') {
+    var returnValue = binarySearchRecursive(sortedArray, 'player_id', playerId)
+  } else if (searchType === 'linear') {
+    var returnValue = linearSearch(sortedArray, playerId, 'player_id')
   } else {
     return res.sendStatus(400);
   }  console.timeEnd('mergeSortRoute')
@@ -43,12 +44,12 @@ router.get('/selectionSort', (req, res) => {
   let searchType = req.query.searchType;
 
   let sortedArray = selectionSort(jsonData, 'player_id');
-  if (searchType = 'binary') {
-    var returnValue = binarySearch(sortedArray, 338365)
-  } else if (searchType = 'binaryRecursive') {
-    var returnValue = binarySearchRecursive(sortedArray, 338365)
-  } else if (searchType = 'linear') {
-    var returnValue = linearSearch(sortedArray, 338365)
+  if (searchType === 'binary') {
+    var returnValue = binarySearch(sortedArray, 'player_id', playerId)
+  } else if (searchType === 'binaryRecursive') {
+    var returnValue = binarySearchRecursive(sortedArray, 'player_id', playerId)
+  } else if (searchType === 'linear') {
+    var returnValue = linearSearch(sortedArray, playerId, 'player_id')
   } else {
     return res.sendStatus(400);
   }  console.timeEnd('selectionSortRoute')
@@ -60,12 +61,12 @@ router.get('/insertionSort', (req, res) => {
   let searchType = req.query.searchType;
 
   let sortedArray = insertionSort(jsonData, 'player_id');
-  if (searchType = 'binary') {
-    var returnValue = binarySearch(sortedArray, 338365)
-  } else if (searchType = 'binaryRecursive') {
-    var returnValue = binarySearchRecursive(sortedArray, 338365)
-  } else if (searchType = 'linear') {
-    var returnValue = linearSearch(sortedArray, 338365)
+  if (searchType === 'binary') {
+    var returnValue = binarySearch(sortedArray, 'player_id', playerId)
+  } else if (searchType === 'binaryRecursive') {
+    var returnValue = binarySearchRecursive(sortedArray, 'player_id', playerId)
+  } else if (searchType === 'linear') {
+    var returnValue = linearSearch(sortedArray, playerId, 'player_id')
   } else {
     return res.sendStatus(400);
   }
@@ -78,12 +79,12 @@ router.get('/quickSort', (req, res) => {
   let searchType = req.query.searchType;
 
   let sortedArray = quickSort(jsonData, 'player_id');
-  if (searchType = 'binary') {
-    var returnValue = binarySearch(sortedArray, 338365)
-  } else if (searchType = 'binaryRecursive') {
-    var returnValue = binarySearchRecursive(sortedArray, 338365)
-  } else if (searchType = 'linear') {
-    var returnValue = linearSearch(sortedArray, 338365)
+  if (searchType === 'binary') {
+    var returnValue = binarySearch(sortedArray, 'player_id', playerId)
+  } else if (searchType === 'binaryRecursive') {
+    var returnValue = binarySearchRecursive(sortedArray, 'player_id', playerId)
+  } else if (searchType === 'linear') {
+    var returnValue = linearSearch(sortedArray, playerId, 'player_id')
   } else {
     return res.sendStatus(400);
   }

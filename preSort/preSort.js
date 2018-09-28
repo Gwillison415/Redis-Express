@@ -11,8 +11,7 @@ function createKvStore(data) {
   client.flushdb( success => {
       console.log('db flushed');
   })
-  let dictionary = {}
-  let array = [];
+  console.time('createRedisStore')
   for (var i = 0; i < data.length; i++) {
     let player = data[i]['player_id']
     let event = data[i]['event_id']
@@ -21,6 +20,7 @@ function createKvStore(data) {
     client.rpush(`event${event}`, JSON.stringify(data[i]))
 
   }
+  console.timeEnd('createRedisStore')
   return true;
 }
 function createDictionaryDS(data) {
@@ -66,4 +66,4 @@ function createquickSortedArray(json) {
   console.timeEnd('createquickSortedArray')
 }
 
-module.exports = { createKvStore, createMergeSortedArray, createbubbleSortedArray, createSelectionSortedArray, createInsertionSortedArray, createquickSortedArray };
+module.exports = { createKvStore, createMergeSortedArray, createbubbleSortedArray, createSelectionSortedArray, createInsertionSortedArray, createquickSortedArray, createDictionaryDS };
